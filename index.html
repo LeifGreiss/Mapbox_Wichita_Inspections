@@ -22,14 +22,14 @@
   <body>
     <div id='map'></div>
     <script>
-    mapboxgl.accessToken = '{pk.eyJ1IjoiZGF0YS1ib2kiLCJhIjoiY2phOXV5dm03MGJocTMxcXQ2MnNsdTNiciJ9.MC3LbaeRMojCFJRxWx4PFA}';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZGF0YS1ib2kiLCJhIjoiY2phOXV5dm03MGJocTMxcXQ2MnNsdTNiciJ9.MC3LbaeRMojCFJRxWx4PFA';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: '{mapbox://styles/data-boi/cjb3xco8ytwec2rnvvnkr3st6}'
+      style: 'mapbox://styles/data-boi/cjb3xco8ytwec2rnvvnkr3st6'
     });
     map.on('click', function(e) {
       var features = map.queryRenderedFeatures(e.point, {
-       layers: ['{wichita-inspections}'] 
+       layers: ['wichita-inspections'] 
     });
 
     if (!features.length) {
