@@ -25,9 +25,25 @@
     mapboxgl.accessToken = '{pk.eyJ1IjoiZGF0YS1ib2kiLCJhIjoiY2phOXV5dm03MGJocTMxcXQ2MnNsdTNiciJ9.MC3LbaeRMojCFJRxWx4PFA}';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: '{mapbox://styles/data-boi/cjb3xco8ytwec2rnvvnkr3st6}' // replace this with your style URL
+      style: '{mapbox://styles/data-boi/cjb3xco8ytwec2rnvvnkr3st6}'
     });
-    // code from the next step will go here
+    map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['{wichita-inspections}'] 
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.Location + '</h3><p>' + feature.properties.Address + ',' + ' ' + feature.properties.City + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+});
     </script>
   </body>
 </html>
