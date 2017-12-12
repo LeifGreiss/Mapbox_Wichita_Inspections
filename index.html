@@ -28,22 +28,22 @@
       style: '{mapbox://styles/data-boi/cjb3xco8ytwec2rnvvnkr3st6}'
     });
     map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['{wichita-inspections}'] 
-  });
+      var features = map.queryRenderedFeatures(e.point, {
+       layers: ['{wichita-inspections}'] 
+    });
 
-  if (!features.length) {
-    return;
-  }
+    if (!features.length) {
+      return;
+    }
 
-  var feature = features[0];
+    var feature = features[0];
 
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.Location + '</h3><p>' + feature.properties.Address + ',' + ' ' + feature.properties.City + '</p>')
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});
+    var popup = new mapboxgl.Popup({ offset: [0, -15] })
+      .setLngLat(feature.geometry.coordinates)
+      .setHTML('<h3>' + feature.properties.Location + '</h3><p>' + feature.properties.Address + '</p>')
+      .setLngLat(feature.geometry.coordinates)
+      .addTo(map);
+    });
     </script>
   </body>
 </html>
